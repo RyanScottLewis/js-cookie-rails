@@ -1,3 +1,4 @@
+require 'rubygems/package_task'
 require 'logger'
 require 'pathname'
 
@@ -16,6 +17,10 @@ def run_command(command)
   $logger.debug(message)
 
   result
+end
+
+Gem::PackageTask.new($spec) do |task|
+  task.need_zip = false
 end
 
 namespace :js_cookie do
